@@ -2,11 +2,7 @@ from typing import Any
 
 import pytest
 
-from src.generators import filter_by_currency
-
-from src.generators import transaction_descriptions
-
-from src.generators import card_number_generator
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 # Тестируем функцию "filter_by_currency":
 # 1) С помощью фикстуры по разным валютам;
