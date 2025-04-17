@@ -1,8 +1,12 @@
+from typing import Any
+
 import pytest
 
 from src.generators import filter_by_currency
 
 from src.generators import transaction_descriptions
+
+from src.generators import card_number_generator
 
 # Тестируем функцию "filter_by_currency":
 # 1) С помощью фикстуры по разным валютам;
@@ -309,3 +313,54 @@ def test_transaction_description_empty() -> None:
 def test_transaction_descriptions_param(next_transaction: list, result: str) -> None:
     results = transaction_descriptions(next_transaction)
     assert next(results) == result
+
+
+# Тестируем функцию "card_number_generator":
+# 1) Начальных значений;
+# 2) Конечных значений;
+# 3) Некорректные входные данные(отрицательные, больше 9999999999999999, start > end, другой тип вместо цифры-int).
+
+
+# 1)
+def test_card_number_generator_1() -> Any:
+    result = card_number_generator(1, 5)
+    assert next(result) == "0000 0000 0000 0001"
+    assert next(result) == "0000 0000 0000 0002"
+    assert next(result) == "0000 0000 0000 0003"
+    assert next(result) == "0000 0000 0000 0004"
+    assert next(result) == "0000 0000 0000 0005"
+
+
+# 2)
+def test_card_number_generator_2() -> Any:
+    result = card_number_generator(9999999999999995, 9999999999999999)
+    assert next(result) == "9999 9999 9999 9995"
+    assert next(result) == "9999 9999 9999 9996"
+    assert next(result) == "9999 9999 9999 9997"
+    assert next(result) == "9999 9999 9999 9998"
+    assert next(result) == "9999 9999 9999 9999"
+
+
+# 3)
+def test_card_number_generator_wrong_1() -> None:
+    with pytest.raises(ValueError) as exc_info:
+        next(card_number_generator(-5, -1))
+    assert str(exc_info.value) == "Некорректные заданные значения"
+
+
+def test_card_number_generator_wrong_2() -> None:
+    with pytest.raises(ValueError) as exc_info:
+        next(card_number_generator(9999999999999999, 10000000000000000))
+    assert str(exc_info.value) == "Некорректные заданные значения"
+
+
+def test_card_number_generator_wrong_3() -> None:
+    with pytest.raises(ValueError) as exc_info:
+        next(card_number_generator(5, 1))
+    assert str(exc_info.value) == "Некорректные заданные значения"
+
+
+def test_card_number_generator_wrong_4() -> None:
+    with pytest.raises(ValueError) as exc_info:
+        next(card_number_generator("5", 1))
+    assert str(exc_info.value) == "Неправильный тип заданного значения"
