@@ -20,4 +20,12 @@ def transaction_descriptions(transactions: list) -> Any:
 
 
 def card_number_generator(start: Any, end: int) -> Any:
-    pass
+    """Функция генерации номеров банковских карт от заданных начального до конечного значений"""
+    if type(start) is not int or type(end) is not int:  # Входные данные неправильного типа
+        raise ValueError("Неправильный тип заданного значения")
+    if not (0 <= start <= end <= 9999999999999999):  # Ограничиваем диапазон генерируемых номеров
+        raise ValueError("Некорректные заданные значения")
+    for number in range(start, end + 1):
+        card_num = "0000000000000000"  # Базовый номер
+        card_num = card_num[: -len(str(number))] + str(number)
+        yield f"{card_num[:4]} {card_num[4:8]} {card_num[8:12]} {card_num[12:16]}"
