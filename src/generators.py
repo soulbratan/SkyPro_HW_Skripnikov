@@ -11,7 +11,12 @@ def filter_by_currency(transactions: list, currency_code: str) -> Any:
 
 
 def transaction_descriptions(transactions: list) -> Any:
-    pass
+    """Функция обработки списка словарей и возврата описания каждой операции по очереди"""
+    for transaction in transactions:
+        if transaction.get("description") == "":  # Проверяем наличие данных по операции
+            yield "---Нет описания операции!!!---"
+        else:
+            yield transaction.get("description")
 
 
 def card_number_generator(start: Any, end: int) -> Any:
