@@ -1,0 +1,8 @@
+2025-04-19 16:14:12.025977 - my_function started. Inputs: (1, 2), {}
+2025-04-19 16:14:12.026463 - my_function OK. Result: 0.5. Time execution: 0:00:00.000486
+2025-04-19 16:14:14.516516 - my_function started. Inputs: (1, 2), {}
+2025-04-19 16:14:14.516844 - my_function OK. Result: 0.5. Time execution: 0:00:00.000328
+2025-04-19 16:14:22.023427 - my_function started. Inputs: (1, 0), {}
+2025-04-19 16:14:22.023762 - my_function error: ZeroDivisionError: division by zero. Inputs: (1, 0), {}. Time execution: 0:00:00.000335
+2025-04-19 16:14:26.534656 - my_function started. Inputs: (1,), {}
+2025-04-19 16:14:26.534979 - my_function error: TypeError: my_function() missing 1 required positional argument: 'y'. Inputs: (1,), {}. Time execution: 0:00:00.000323
