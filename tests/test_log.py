@@ -42,3 +42,29 @@ def test_log_decorator_help(capsys: Any) -> Any:
     help(my_function)
     captured = capsys.readouterr()
     assert "Функция проверки декоратора" in captured.out
+
+
+# 4) Тестируем вывод в консоль логов об ошибке 'ZeroDivisionError'(входные параметры декорируемой функции (1, 0)).
+def test_log_decorator_error_ZeroDiv(capsys: Any) -> Any:
+    @log()
+    def my_function(x: Any, y: Any) -> Any:
+        return x / y
+
+    with pytest.raises(ZeroDivisionError, match="division by zero"):
+        my_function(1, 0)
+        captured = capsys.readouterr()
+        assert "- my_function error: ZeroDivisionError: division by zero. Inputs: (1, 0), {}." in captured.out
+
+
+# 5) Тестируем вывод в консоль логов об ошибке 'TypeError'(входные параметры декорируемой функции (1, )).
+def test_log_decorator_error_type(capsys: Any) -> Any:
+    @log()
+    def my_function(x: Any, y: Any) -> Any:
+        return x / y
+
+    with pytest.raises(TypeError):
+        my_function(
+            1,
+        )
+        captured = capsys.readouterr()
+        assert "my_function() missing 1 required positional argument: 'y'" in captured.out

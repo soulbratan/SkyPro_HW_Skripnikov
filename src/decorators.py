@@ -28,13 +28,26 @@ def log(filename: Any = None) -> Any:
             start_time = datetime.now()
             start_msg = f"{start_time} - {func_name} started. {inputs}"
             print(start_msg)
-            # Выполняем функцию
-            result = func(*args, **kwargs)
-            end_time = datetime.now()
-            time_execution = end_time - start_time
-            # Формируем сообщение об успешном выполнения функции
-            success_msg = f"{end_time} - {func_name} OK. Result: {result}. Time execution: {time_execution}"
-            print(success_msg)
+            try:
+                # Выполняем функцию
+                result = func(*args, **kwargs)
+                end_time = datetime.now()
+                time_execution = end_time - start_time
+                # Формируем сообщение об успешном выполнения функции
+                success_msg = f"{end_time} - {func_name} OK. Result: {result}. Time execution: {time_execution}"
+                print(success_msg)
+                return result
+            except Exception as exceptions:
+                end_time = datetime.now()
+                time_execution = end_time - start_time
+                # Формируем сообщение об ошибке выполнения функции
+                error_msg = (
+                    f"{end_time} - {func_name} error: {type(exceptions).__name__}: {str(exceptions)}."
+                    f" {inputs}. Time execution: {time_execution}"
+                )
+
+                print(error_msg)
+                raise  # Передаём пойманное исключение дальше
 
         return wrapper
 
