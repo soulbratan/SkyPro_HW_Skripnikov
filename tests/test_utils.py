@@ -1,9 +1,11 @@
 import json
 from unittest.mock import mock_open, patch
-
+from typing import Any
 from src.utils import load_transactions_list
+from src.external_api import exchange_api
 
 # 1) Тесты функции load_transactions_list с помощью заглушек
+# 2) Тест функции exchange_api с помощью заглушки функции ("requests.get")
 
 # 1)
 def test_load_transactions_list_success() -> None:
@@ -45,3 +47,15 @@ def test_load_transactions_list_file_not_found() -> None:
     with patch("builtins.open", side_effect=FileNotFoundError):
         result = load_transactions_list("nonexistent.json")
         assert result == []
+
+
+# 2)
+@patch("requests.get")
+def test_exchange_api_return(mock_get: Any) -> Any:
+    mock_get.return_value.json.return_value = {"result": 80.0}
+    assert float(exchange_api("USD", "RUB", 1.0)) == 80.0
+    mock_get.assert_called_once_with(
+        "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=1.0",
+        headers={"apikey": "ec2dgEIZNQPgWKhhMBuIjKEQKHmUP2py"},
+        data={},
+    )
