@@ -9,6 +9,9 @@ from src.utils import load_transactions_list, transaction_amount
 
 # 1) Тесты функции load_transactions_list с помощью заглушек
 # 2) Тест функции exchange_api с помощью заглушки функции ("requests.get")
+# 3) Тест функции transaction_amount с помощью фикстуры
+# 4) Тест функции transaction_amount с помощью параметризации
+# 5) Тест функции transaction_amount с помощью заглушки функции ("exchange_api")
 
 
 # 1)
@@ -65,13 +68,13 @@ def test_exchange_api_return(mock_get: Any) -> Any:
     )
 
 
-# 1)Тест функции transaction_amount с помощью фикстуры
+# 3)
 def test_transaction_amount_rub(transaction_1: dict) -> None:
     result = transaction_amount(transaction_1)
     assert result == 43318.34
 
 
-# 2) Тест функции transaction_amount с помощью параметризации
+# 4)
 @pytest.mark.parametrize(
     "some_transactions, result",
     [
@@ -97,7 +100,7 @@ def test_transaction_amount_param(some_transactions: dict, result: Any) -> None:
     assert results == result
 
 
-# 3) Тест функции transaction_amount с помощью заглушки функции ("exchange_api")
+# 5)
 @patch("src.external_api.exchange_api")
 def test_transaction_amount_api(mock_exchange_api: Any) -> None:
     mock_exchange_api.return_value = "100.0"
