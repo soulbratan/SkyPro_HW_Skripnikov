@@ -1,5 +1,8 @@
 import json
-# from typing import Any
+from typing import Any
+
+# from src.external_api import exchange_api
+from src import external_api
 
 
 def load_transactions_list(file_name: str) -> list:
@@ -19,7 +22,46 @@ def load_transactions_list(file_name: str) -> list:
 
 
 # file_names = "../data/operations.json"
-#
+
 # result = load_transactions_list(file_names)
 #
 # print(result[0])
+
+
+def transaction_amount(transaction: dict) -> Any:
+    """
+    Функция, которая принимает на вход транзакцию и возвращает сумму транзакции в рублях (float).
+    Если транзакция была в другой валюте, то происходит конвертация через Exchange Rates Data API по текущему курсу.
+    """
+    if "operationAmount" in transaction:  # Проверяем наличие ключей
+        if (
+            "amount" in transaction["operationAmount"] and "currency" in transaction["operationAmount"]
+        ):  # Проверяем наличие ключей
+            if "RUB" in transaction["operationAmount"]["currency"]["code"]:  # Проверяем валюту операции
+                return float(transaction["operationAmount"]["amount"])  # Если "RUB" выводим сумму транзакции (float)
+            else:
+                amount = float(transaction["operationAmount"]["amount"])
+                from_currency = transaction["operationAmount"]["currency"]["code"]
+                to_currency = "RUB"
+                return float(
+                    external_api.exchange_api(from_currency, to_currency, amount)
+                )  # Иначе конвертируем через API и выводим
+        else:
+            return "Некорректные данные транзакции"
+    else:
+        return "Некорректные данные транзакции"
+
+
+# transactions = {
+#     "id": 41428829,
+#     "state": "EXECUTED",
+#     "date": "2019-07-03T18:35:29.512364",
+#     "operationAmount": {"amount": "1.0", "currency": {"name": "USD", "code": "USD"}},
+#     "description": "Перевод организации",
+#     "from": "MasterCard 7158300734726758",
+#     "to": "Счет 35383033474447895560",
+# }
+#
+#
+# x = transaction_amount(transactions)
+# print(x)

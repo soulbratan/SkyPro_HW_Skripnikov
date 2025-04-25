@@ -1,11 +1,15 @@
 import json
-from unittest.mock import mock_open, patch
 from typing import Any
-from src.utils import load_transactions_list
+from unittest.mock import mock_open, patch
+
+import pytest
+
 from src.external_api import exchange_api
+from src.utils import load_transactions_list, transaction_amount
 
 # 1) Тесты функции load_transactions_list с помощью заглушек
 # 2) Тест функции exchange_api с помощью заглушки функции ("requests.get")
+
 
 # 1)
 def test_load_transactions_list_success() -> None:
@@ -59,3 +63,51 @@ def test_exchange_api_return(mock_get: Any) -> Any:
         headers={"apikey": "ec2dgEIZNQPgWKhhMBuIjKEQKHmUP2py"},
         data={},
     )
+
+
+# 1)Тест функции transaction_amount с помощью фикстуры
+def test_transaction_amount_rub(transaction_1: dict) -> None:
+    result = transaction_amount(transaction_1)
+    assert result == 43318.34
+
+
+# 2) Тест функции transaction_amount с помощью параметризации
+@pytest.mark.parametrize(
+    "some_transactions, result",
+    [
+        ({"operationAmount": {"amount": "1018.34", "currency": {"name": "руб.", "code": "RUB"}}}, 1018.34),
+        ({"operationAmount": {"amount": "0.0", "currency": {"name": "руб.", "code": "RUB"}}}, 0.0),
+        ({"operationAmount": {"amount": "1234.12", "currency": {"name": "руб.", "code": "RUB"}}}, 1234.12),
+        (
+            {"operation": {"amount": "1234.12", "currency": {"name": "руб.", "code": "RUB"}}},
+            "Некорректные данные транзакции",
+        ),
+        (
+            {"operationAmount": {"am": "1234.12", "currency": {"name": "руб.", "code": "RUB"}}},
+            "Некорректные данные транзакции",
+        ),
+        (
+            {"operationAmount": {"amount": "1234.12", "curre": {"name": "руб.", "code": "RUB"}}},
+            "Некорректные данные транзакции",
+        ),
+    ],
+)
+def test_transaction_amount_param(some_transactions: dict, result: Any) -> None:
+    results = transaction_amount(some_transactions)
+    assert results == result
+
+
+# 3) Тест функции transaction_amount с помощью заглушки функции ("exchange_api")
+@patch("src.external_api.exchange_api")
+def test_transaction_amount_api(mock_exchange_api: Any) -> None:
+    mock_exchange_api.return_value = "100.0"
+    test_data = {
+        "id": 41428829,
+        "state": "EXECUTED",
+        "date": "2019-07-03T18:35:29.512364",
+        "operationAmount": {"amount": "100.0", "currency": {"name": "USD", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "MasterCard 7158300734726758",
+        "to": "Счет 35383033474447895560",
+    }
+    assert transaction_amount(test_data) == 100.0
