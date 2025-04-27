@@ -40,7 +40,7 @@ def load_transactions_list(file_name: str) -> list:
             logger.warning("Returned the empty list.")
             return []  # В обратном случае возвращаем пустой список
     except (FileNotFoundError, json.JSONDecodeError) as e:  # Если не найден, или не список возвращаем []
-        logger.error(f"{e}")
+        logger.error(f"<line43> {e}")
         return []
 
 
@@ -56,22 +56,29 @@ def transaction_amount(transaction: dict) -> Any:
     Функция, которая принимает на вход транзакцию и возвращает сумму транзакции в рублях (float).
     Если транзакция была в другой валюте, то происходит конвертация через Exchange Rates Data API по текущему курсу.
     """
+    logger.info(f"Func <{transaction_amount.__name__}> started.")
     if "operationAmount" in transaction:  # Проверяем наличие ключей
         if (
             "amount" in transaction["operationAmount"] and "currency" in transaction["operationAmount"]
         ):  # Проверяем наличие ключей
             if "RUB" in transaction["operationAmount"]["currency"]["code"]:  # Проверяем валюту операции
+                logger.info(f"Func <{transaction_amount.__name__}> successfully completed.")
                 return float(transaction["operationAmount"]["amount"])  # Если "RUB" выводим сумму транзакции (float)
             else:
+                logger.info("Starting request to Exchange Rates Data API")
                 amount = float(transaction["operationAmount"]["amount"])
                 from_currency = transaction["operationAmount"]["currency"]["code"]
                 to_currency = "RUB"
-                return float(
+                result = float(
                     external_api.exchange_api(from_currency, to_currency, amount)
                 )  # Иначе конвертируем через API и выводим
+                logger.info(f"Func <{transaction_amount.__name__}> completed.")
+                return result
         else:
+            logger.error("No key found with the name <amount> or <currency>")
             return "Некорректные данные транзакции"
     else:
+        logger.error("No key found with the name <operationAmount>")
         return "Некорректные данные транзакции"
 
 
