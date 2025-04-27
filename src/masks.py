@@ -1,4 +1,22 @@
+import logging
+from pathlib import Path
 from typing import Union
+
+# Путь относительно текущего файла
+current_dir = Path(__file__).parent  # Директория текущего скрипта
+file_path = current_dir.parent / "logs" / "masks.log"  # Поднимаемся вверх и ищем файл
+
+# Абсолютный путь
+absolute_path = file_path.resolve()
+
+logger = logging.getLogger("masks")  # Создание объекта логгера для модуля masks
+file_handler = logging.FileHandler(filename=absolute_path, mode="w", encoding="UTF-8")  # Настраиваем хэндлер для файла
+file_formatter = logging.Formatter(
+    fmt="%(asctime)s %(filename)s, %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
+)  # Настраиваем форматер
+file_handler.setFormatter(file_formatter)  # Устанавливаем форматер
+logger.addHandler(file_handler)  # Добавляем хэндлер в логер
+logger.setLevel(logging.DEBUG)  # Устанавливаем уровень логирования
 
 
 # Определяем функцию get_mask_card_number для маскирования номера карты
