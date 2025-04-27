@@ -28,13 +28,19 @@ def load_transactions_list(file_name: str) -> list:
      возвращает список словарей с данными о финансовых транзакциях.
      Если файл пустой, содержит не список или не найден, функция возвращает пустой список.
     """
+    logger.info(f"Func <{load_transactions_list.__name__}> started. Checking the path - ({file_name})")
     try:
         with open(file_name, "r", encoding="utf-8") as f:  # Обращаемся к файлу по заданному пути
             data = json.load(f)  # Преобразуем JSON-файл в файл Python
             if isinstance(data, list):  # Проверка на соответствие типа данных
+                logger.info(
+                    f"Func <{load_transactions_list.__name__}> successfully completed. The list has been received."
+                )
                 return data  # Если соответствует, возвращаем список словарей
+            logger.warning("Returned the empty list.")
             return []  # В обратном случае возвращаем пустой список
-    except (FileNotFoundError, json.JSONDecodeError):  # Если не найден, или не список возвращаем []
+    except (FileNotFoundError, json.JSONDecodeError) as e:  # Если не найден, или не список возвращаем []
+        logger.error(f"{e}")
         return []
 
 
