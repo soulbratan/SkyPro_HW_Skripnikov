@@ -1,5 +1,7 @@
 import csv
 
+import pandas as pd
+
 
 def csv_to_dict(path_file: str) -> list[dict]:
     """Функция преобразования CSV файла в список словарей"""
@@ -12,6 +14,16 @@ def csv_to_dict(path_file: str) -> list[dict]:
         return transactions_list
     except (FileNotFoundError, csv.Error):
         return []
+
+
+def excel_to_dicts(file_path: str) -> list[dict]:
+    """Функция преобразования Excel файла в список словарей"""
+    try:
+        df = pd.read_excel(file_path)  # Читаем Excel файл методом pandas
+        return df.to_dict("records")  # Преобразуем в список словарей структурируя (orient='records')
+    except (FileNotFoundError, pd.errors.EmptyDataError):
+        return []
+
 
 # result = csv_to_dict("../data/transactions.csv")
 # print(result[0])
