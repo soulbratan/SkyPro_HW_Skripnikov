@@ -10,7 +10,7 @@ def csv_to_dict(path_file: str) -> list[dict]:
             for row in reader:
                 transactions_list.append(row)  # Записываем каждый словарь в список
         return transactions_list
-    except FileNotFoundError:
+    except (FileNotFoundError, csv.Error):
         return []
 
 # result = csv_to_dict("../data/transactions.csv")
