@@ -149,8 +149,9 @@ def test_sort_by_date_wrong_2() -> None:
     assert str(exc_info.value) == "Некорректная дата"
 
 
-def test_search_transactions(transaction):
-    assert processing.search_transactions(transaction, "751068306") == [{
+def test_search_transactions(transaction: list[dict]) -> None:
+    assert processing.search_transactions(transaction, "751068306") == [
+        {
             "id": 939719570,
             "state": "EXECUTED",
             "date": "2018-06-30T02:08:58.425572",
@@ -158,8 +159,27 @@ def test_search_transactions(transaction):
             "description": "Перевод организации",
             "from": "Счет 75106830613657916952",
             "to": "Счет 11776614605963066702",
-        }]
+        }
+    ]
 
 
-def test_search_transactions_empty(transaction):
+def test_search_transactions_empty(transaction: list[dict]) -> None:
     assert processing.search_transactions(transaction, "751068306s") == []
+
+
+def test_count_descriptions(transaction: list[dict]) -> None:
+    assert processing.count_descriptions(transaction, ["ПЕРЕВОД", "Вклад"]) == {
+        "Перевод организации": 2,
+        "Перевод со счета на счет": 2,
+        "Перевод с карты на карту": 1,
+    }
+    assert processing.count_descriptions(transaction, ["каРтУ"]) == {"Перевод с карты на карту": 1}
+    assert processing.count_descriptions(transaction, ["12sdafas"]) == {}
+
+
+def test_count_descriptions_not_list(transaction: list[dict]) -> None:
+    assert processing.count_descriptions(transaction, "перевод") == "Второй аргумент не список"
+
+
+def test_count_descriptions_error() -> None:
+    assert processing.count_descriptions([{}], ["ПЕРЕВОД", "Вклад"]) == "Error: 'list' object has no attribute 'lower'"

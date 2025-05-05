@@ -1,5 +1,7 @@
 # Новый модуль для функций обработки данных
 import re
+from collections import Counter
+from typing import Any
 
 
 def filter_by_state(unfiltered_list: list, filtering_state: str = "EXECUTED") -> list:
@@ -31,6 +33,27 @@ def search_transactions(transactions: list[dict], search_text: str) -> list[dict
         if search_result:
             new_list.append(i)
     return new_list
+
+
+def count_descriptions(transactions: list[dict], category_list: Any) -> Any:
+    """
+    Функция принимает список словарей и список категорий операций.
+    Возвращает словарь с посчитанными операциями по каждой категории
+    """
+    try:
+        if type(category_list) is list:
+            new_list = list()
+            descriptions_list = [i.get("description", []) for i in transactions]
+            for i in category_list:
+                for item in descriptions_list:
+                    if i.lower() in item.lower():
+                        new_list.append(item)
+            counted = dict(Counter(new_list))
+            return counted
+        else:
+            return "Второй аргумент не список"
+    except Exception as e:
+        return f"Error: {e}"
 
 
 test_list = [
