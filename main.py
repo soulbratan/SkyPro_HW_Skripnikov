@@ -1,5 +1,6 @@
 from src import utils
 from src import read_tables
+from src import processing
 
 def main():
     print(
@@ -11,16 +12,24 @@ def main():
     )
     choice_1 = input("Ваш выбор: ")
     if choice_1 == "1":
+        print("Для обработки выбран JSON-файл.")
         result_1 = utils.load_transactions_list("data/operations.json")
-        return result_1
     elif choice_1 == "2":
-        result_2 = read_tables.csv_to_dict("data/transactions.csv")
-        return result_2
+        print("Для обработки выбран CSV-файл.")
+        result_1 = read_tables.csv_to_dict("data/transactions.csv")
     elif choice_1 == "3":
-        result_3 = read_tables.excel_to_dicts("data/transactions_excel.xlsx")
-        return result_3
+        print("Для обработки выбран XLSX-файл.")
+        result_1 = read_tables.excel_to_dicts("data/transactions_excel.xlsx")
     else:
-        return "Вы не выбрали ничего из предложенного списка"
+        print("Вы не выбрали ничего из предложенного списка")
+        return [{}]
+    print("Введите статус, по которому необходимо выполнить фильтрацию. "
+          "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING")
+    choice_2 = input("Ваш выбор: ").upper()
+    print(f"Операции отфильтрованы по статусу {choice_2}")
+    result_2 = processing.filter_by_state(result_1, choice_2)
+    return result_2
+
 
 x = main()
-print(x[0])
+print(x)

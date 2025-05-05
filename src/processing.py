@@ -6,10 +6,10 @@ from typing import Any
 
 def filter_by_state(unfiltered_list: list, filtering_state: str = "EXECUTED") -> list:
     """Функция фильтрующая входящий список по ключу "state". По умолчанию ключ равен "EXECUTED"."""
-    if filtering_state != "EXECUTED" and filtering_state != "CANCELED":
+    if filtering_state != "EXECUTED" and filtering_state != "CANCELED" and filtering_state != "PENDING":
         raise ValueError("Неправильное имя фильтра")
     return [
-        i for i in unfiltered_list if i["state"] == filtering_state
+        i for i in unfiltered_list if i.get("state", " ") == filtering_state
     ]  # Возвращаем отфильтрованный по ключу 'state' список с помощью list comprehension
 
 

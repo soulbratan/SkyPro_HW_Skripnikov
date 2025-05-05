@@ -1,0 +1,2 @@
+2025-05-05 21:32:04 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (data/operations.json)
+2025-05-05 21:32:04 utils.py, INFO: Func <load_transactions_list> successfully completed. The list has been received.
