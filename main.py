@@ -34,21 +34,34 @@ def main():
             result_2 = processing.filter_by_state(result_1, choice_2) # Фильтруем по статусу
             correct = 1
         else:
-            print(f"Статус операции {choice_2} недоступен.")
+            print(f"Статус операции {choice_2} недоступен.") # Если некорректный ввод, то заново
     print("Отсортировать операции по дате? Да/Нет")
     choice_3 = input("Ваш выбор: ").lower()
     if choice_3 == "да":
         print("Отсортировать 'по возрастанию' или 'по убыванию'?")
         choice_31 = input("Ваш выбор: ").lower()
         if choice_31 == "по возрастанию":
-            result_3 = processing.sort_by_date(result_2, False)
+            result_3 = processing.sort_by_date(result_2, False) # Сортируем по возрастанию
         elif choice_31 == "по убыванию":
-            result_3 = processing.sort_by_date(result_2)
+            result_3 = processing.sort_by_date(result_2) # Сортируем по убыванию
+    else:
+        result_3 = result_2
     print("Выводить только рублевые транзакции? Да/Нет")
     choice_4 = input("Ваш выбор: ").lower()
     if choice_4 == "да":
-        result_4 = [i for i in generators.filter_by_currency(result_3, "RUB")]
-    return result_4
+        result_4 = [i for i in generators.filter_by_currency(result_3, "RUB")] # Фильтруем по рублёвой валюте
+    else:
+        result_4 = result_3
+    print("Отфильтровать список транзакций по определенному слову в описании? Да/Нет")
+    choice_5 = input("Ваш выбор: ").lower()
+    if choice_5 == "да":
+        choice_51 = input("Введите слово: ")
+        result_5 = processing.search_transactions(result_4, choice_51)
+    else:
+        result_5 = result_4
+    print("Распечатываю итоговый список транзакций...")
+    print(f"Всего банковских операций в выборке: {len(result_5)}")
+    return result_5
 
 x = main()
 print(x)
