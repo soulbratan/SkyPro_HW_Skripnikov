@@ -147,3 +147,19 @@ def test_sort_by_date_wrong_2() -> None:
             ]
         )
     assert str(exc_info.value) == "Некорректная дата"
+
+
+def test_search_transactions(transaction):
+    assert processing.search_transactions(transaction, "751068306") == [{
+            "id": 939719570,
+            "state": "EXECUTED",
+            "date": "2018-06-30T02:08:58.425572",
+            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод организации",
+            "from": "Счет 75106830613657916952",
+            "to": "Счет 11776614605963066702",
+        }]
+
+
+def test_search_transactions_empty(transaction):
+    assert processing.search_transactions(transaction, "751068306s") == []

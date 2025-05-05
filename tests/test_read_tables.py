@@ -16,7 +16,8 @@ from src.read_tables import csv_to_dict, excel_to_dicts
 # 1)
 def test_successful_csv() -> Any:
     """Тест нормальной работы."""
-    csv_data = """id;name;amount# Подготовка тестовых данных в формате CSV
+    # Подготовка тестовых данных в формате CSV
+    csv_data = """id;name;amount
 1;Alice;100
 2;Bob;200
 3;Charlie;300"""
