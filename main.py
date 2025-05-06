@@ -2,6 +2,7 @@ from src import utils
 from src import read_tables
 from src import processing
 from src import generators
+from src import widget
 
 def main():
     print(
@@ -60,9 +61,19 @@ def main():
     else:
         result_5 = result_4
     print("Распечатываю итоговый список транзакций...")
-    print(f"Всего банковских операций в выборке: {len(result_5)}")
-    return result_5
+    if len(result_5) == 0:
+        print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
+    else:
+        print(f"Всего банковских операций в выборке: {len(result_5)}")
+        for i in result_5:
+            first_line = f"{widget.get_date(i['date'])} {i.get('description')}\n"
+            if i.get('description').lower() == "открытие вклада":
+                second_line = f"{widget.mask_account_card(i.get('to'))}\n"
+            else:
+                second_line = f"{widget.mask_account_card(i.get('from', "Новый"))} -> {widget.mask_account_card(i.get('to'))}\n"
+            third_line = f"Сумма: {i.get('operationAmount').get('amount')} {i.get('operationAmount').get('currency').get('name')}\n"
+        print(f"{first_line}{second_line}{third_line}")
 
 x = main()
-print(x)
+
 
