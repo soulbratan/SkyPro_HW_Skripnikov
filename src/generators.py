@@ -1,7 +1,7 @@
 from typing import Any
 
 
-def filter_by_currency(transactions: list, currency_code: str) -> Any:
+def filter_by_currency(transactions: list | Any, currency_code: str) -> Any:
     """Функция фильтрации списка словарей по заданной валюте (возвращает итератор)"""
     for transaction in transactions:  # Перебираем словари
         try:

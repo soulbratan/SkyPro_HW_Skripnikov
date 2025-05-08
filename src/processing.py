@@ -13,7 +13,7 @@ def filter_by_state(unfiltered_list: list, filtering_state: str = "EXECUTED") ->
     ]  # Возвращаем отфильтрованный по ключу 'state' список с помощью list comprehension
 
 
-def sort_by_date(unsorted_list: list, reverse: bool = True) -> list:
+def sort_by_date(unsorted_list: Any, reverse: bool = True) -> Any:
     """Функция сортирует список словарей по дате. По умолчанию сортировка по убыванию."""
     for i in unsorted_list:
         if len(i["date"]) < 1 or int(i["date"][8:10]) > 31 or int(i["date"][5:7]) > 12 or not i["date"][0:4].isdigit():
