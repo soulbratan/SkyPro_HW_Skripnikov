@@ -173,7 +173,7 @@ def test_search_transactions_empty(transaction: list[dict]) -> None:
     assert processing.search_transactions(transaction, "751068306s") == []
 
 
-# Тестируем функцию "search_transactions":
+# Тестируем функцию "count_descriptions":
 # 1) Успешные и нулевой результат поиска (с применением фикстуры);
 # 2) Ошибка второго аргумента (должен быть список);
 # 3) Обработка ошибки при пустом списке-словарей;
