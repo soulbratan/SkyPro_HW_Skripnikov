@@ -28,8 +28,8 @@ def search_transactions(transactions: list[dict], search_text: str) -> list[dict
     new_list = list()
     pattern = f"{search_text}"
     for i in transactions:
-        clean_text = re.sub(r"[^\w\s]", "", str(i), flags=re.UNICODE)
-        search_result = re.search(pattern, clean_text, flags=re.IGNORECASE)
+        text_description = i.get("description", " ")
+        search_result = re.search(pattern, text_description, flags=re.IGNORECASE)
         if search_result:
             new_list.append(i)
     return new_list

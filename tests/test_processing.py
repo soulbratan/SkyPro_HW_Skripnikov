@@ -155,15 +155,15 @@ def test_sort_by_date_wrong_2() -> None:
 
 # 1)
 def test_search_transactions(transaction: list[dict]) -> None:
-    assert processing.search_transactions(transaction, "751068306") == [
+    assert processing.search_transactions(transaction, "карту") == [
         {
-            "id": 939719570,
+            "id": 895315941,
             "state": "EXECUTED",
-            "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перевод организации",
-            "from": "Счет 75106830613657916952",
-            "to": "Счет 11776614605963066702",
+            "date": "2018-08-19T04:27:37.904916",
+            "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод с карты на карту",
+            "from": "Visa Classic 6831982476737658",
+            "to": "Visa Platinum 8990922113665229",
         }
     ]
 
