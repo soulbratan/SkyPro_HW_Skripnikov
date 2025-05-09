@@ -40,20 +40,17 @@ def count_descriptions(transactions: list[dict], category_list: Any) -> Any:
     Функция принимает список словарей и список категорий операций.
     Возвращает словарь с посчитанными операциями по каждой категории
     """
-    try:
-        if type(category_list) is list:
-            new_list = list()
-            descriptions_list = [i.get("description", []) for i in transactions]
-            for i in category_list:
-                for item in descriptions_list:
-                    if i.lower() in item.lower():
-                        new_list.append(item)
-            counted = dict(Counter(new_list))
-            return counted
-        else:
-            return "Второй аргумент не список"
-    except Exception as e:
-        return f"Error: {e}"
+    if type(category_list) is list:
+        new_list = list()
+        descriptions_list = [i.get("description", " ") for i in transactions]
+        for i in category_list:
+            for item in descriptions_list:
+                if i.lower() in item.lower():
+                    new_list.append(item)
+        counted = dict(Counter(new_list))
+        return counted
+    else:
+        return dict()
 
 
 test_list = [

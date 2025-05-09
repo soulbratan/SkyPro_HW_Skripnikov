@@ -190,8 +190,8 @@ def test_count_descriptions(transaction: list[dict]) -> None:
 
 # 2)
 def test_count_descriptions_not_list(transaction: list[dict]) -> None:
-    assert processing.count_descriptions(transaction, "перевод") == "Второй аргумент не список"
+    assert processing.count_descriptions(transaction, "перевод") == {}
 
 # 3)
 def test_count_descriptions_error() -> None:
-    assert processing.count_descriptions([{}], ["ПЕРЕВОД", "Вклад"]) == "Error: 'list' object has no attribute 'lower'"
+    assert processing.count_descriptions([{}], ["ПЕРЕВОД", "Вклад"]) == {}
