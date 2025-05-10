@@ -1,7 +1,8 @@
 from typing import Any
+from typing import Generator, Iterator
 
 
-def filter_by_currency(transactions: list | Any, currency_code: str) -> Any:
+def filter_by_currency(transactions: list | Any, currency_code: str) -> Iterator[str]:
     """Функция фильтрации списка словарей по заданной валюте (возвращает итератор)"""
     for transaction in transactions:  # Перебираем словари
         try:
@@ -14,7 +15,7 @@ def filter_by_currency(transactions: list | Any, currency_code: str) -> Any:
                 yield transaction
 
 
-def transaction_descriptions(transactions: list) -> Any:
+def transaction_descriptions(transactions: list) -> Generator[str, None, None]:
     """Функция обработки списка словарей и возврата описания каждой операции по очереди"""
     for transaction in transactions:
         if transaction.get("description") == "":  # Проверяем наличие данных по операции
@@ -23,7 +24,7 @@ def transaction_descriptions(transactions: list) -> Any:
             yield transaction.get("description")
 
 
-def card_number_generator(start: Any, end: int) -> Any:
+def card_number_generator(start: Any, end: int) -> Generator[str, None, None]:
     """Функция генерации номеров банковских карт от заданных начального до конечного значений"""
     if type(start) is not int or type(end) is not int:  # Входные данные неправильного типа
         raise ValueError("Неправильный тип заданного значения")

@@ -3,7 +3,7 @@ from typing import Any
 from src import generators, processing, read_tables, utils, widget
 
 
-def main() -> Any:
+def main() -> list:
     """Функция основной логики проекта, которая связывает функциональности между собой. Реализует выборку транзакций"""
     print(
         "Привет! Добро пожаловать в программу работы с банковскими транзакциями.\n"

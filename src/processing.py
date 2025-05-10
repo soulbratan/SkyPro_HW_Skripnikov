@@ -35,7 +35,7 @@ def search_transactions(transactions: list[dict], search_text: str) -> list[dict
     return new_list
 
 
-def count_descriptions(transactions: list[dict], category_list: Any) -> Any:
+def count_descriptions(transactions: list[dict], category_list: list) -> dict[str, int]:
     """
     Функция принимает список словарей и список категорий операций.
     Возвращает словарь с посчитанными операциями по каждой категории
