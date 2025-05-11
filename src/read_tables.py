@@ -26,4 +26,5 @@ def excel_to_dicts(file_path: str) -> list[dict]:
 
 
 # result = csv_to_dict("../data/transactions.csv")
+# result = excel_to_dicts("../data/transactions_excel.xlsx")
 # print(result[0])

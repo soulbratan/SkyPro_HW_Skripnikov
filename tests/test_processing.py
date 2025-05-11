@@ -147,3 +147,51 @@ def test_sort_by_date_wrong_2() -> None:
             ]
         )
     assert str(exc_info.value) == "Некорректная дата"
+
+
+# Тестируем функцию "search_transactions":
+# 1) Успешный результат поиска (с применением фикстуры);
+# 2) Нулевой результат поиска;
+
+# 1)
+def test_search_transactions(transaction: list[dict]) -> None:
+    assert processing.search_transactions(transaction, "карту") == [
+        {
+            "id": 895315941,
+            "state": "EXECUTED",
+            "date": "2018-08-19T04:27:37.904916",
+            "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод с карты на карту",
+            "from": "Visa Classic 6831982476737658",
+            "to": "Visa Platinum 8990922113665229",
+        }
+    ]
+
+
+# 2)
+def test_search_transactions_empty(transaction: list[dict]) -> None:
+    assert processing.search_transactions(transaction, "751068306s") == []
+
+
+# Тестируем функцию "count_descriptions":
+# 1) Успешные и нулевой результат поиска (с применением фикстуры);
+# 2) Ошибка второго аргумента (должен быть список);
+# 3) Обработка ошибки при пустом списке-словарей;
+
+# 1)
+def test_count_descriptions(transaction: list[dict]) -> None:
+    assert processing.count_descriptions(transaction, ["ПЕРЕВОД", "Вклад"]) == {
+        "Перевод организации": 2,
+        "Перевод со счета на счет": 2,
+        "Перевод с карты на карту": 1,
+    }
+    assert processing.count_descriptions(transaction, ["каРтУ"]) == {"Перевод с карты на карту": 1}
+    assert processing.count_descriptions(transaction, ["12sdafas"]) == {}
+
+# 2)
+def test_count_descriptions_not_list(transaction: list[dict]) -> None:
+    assert processing.count_descriptions(transaction, "перевод") == {}
+
+# 3)
+def test_count_descriptions_error() -> None:
+    assert processing.count_descriptions([{}], ["ПЕРЕВОД", "Вклад"]) == {}

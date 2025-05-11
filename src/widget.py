@@ -1,7 +1,8 @@
 from src import masks  # import get_mask_card_number and get_mask_account
+from typing import Any
 
 
-def mask_account_card(inf_account: str) -> str:
+def mask_account_card(inf_account: str | Any) -> str:
     """Функция обработки информации о картах и счетах"""
     inf_account_number: str = ""
     inf_account_text: str = ""

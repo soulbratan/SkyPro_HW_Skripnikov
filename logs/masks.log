@@ -1,42 +1,42 @@
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****4567
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****1234
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****5678
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****9876
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****6781
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 17 != 16. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****1234
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 12 != 16. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****9876
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 16 != 16. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_card_number> started. Input: ****()
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 2 != 16. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****4267
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****5321
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****8945
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****1111
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> successfully completed.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****3213
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 21 != 20. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****7894
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 19 != 20. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****1111
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 20 != 20. Or number not contain only numbers.
-2025-05-01 12:23:58 masks.py, INFO: Func <get_mask_account> started. Input: ****()
-2025-05-01 12:23:58 masks.py, ERROR: Wrong card number length. 2 != 20. Or number not contain only numbers.
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_account> started. Input: ****4305
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_account> successfully completed.
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_card_number> started. Input: ****6361
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_card_number> successfully completed.
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_account> started. Input: ****5560
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_account> successfully completed.
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_card_number> started. Input: ****6758
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_card_number> successfully completed.
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_card_number> started. Input: ****5199
-2025-05-01 12:23:59 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****4567
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****1234
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****5678
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****9876
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****6781
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 17 != 16. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****1234
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 12 != 16. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****9876
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 16 != 16. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****()
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 2 != 16. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****4267
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****5321
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****8945
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****1111
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****3213
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 21 != 20. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****7894
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 19 != 20. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****1111
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 20 != 20. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****()
+2025-05-10 12:16:15 masks.py, ERROR: Wrong card number length. 2 != 20. Or number not contain only numbers.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****4305
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****6361
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> started. Input: ****5560
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_account> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****6758
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> started. Input: ****5199
+2025-05-10 12:16:15 masks.py, INFO: Func <get_mask_card_number> successfully completed.

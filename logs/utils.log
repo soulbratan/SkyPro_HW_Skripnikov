@@ -1,27 +1,27 @@
-2025-05-01 12:23:59 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (test.json)
-2025-05-01 12:23:59 utils.py, INFO: Func <load_transactions_list> successfully completed. The list has been received.
-2025-05-01 12:23:59 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (empty.json)
-2025-05-01 12:23:59 utils.py, ERROR: <line43> Expecting value: line 1 column 1 (char 0)
-2025-05-01 12:23:59 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (invalid.json)
-2025-05-01 12:23:59 utils.py, ERROR: <line43> Expecting value: line 1 column 1 (char 0)
-2025-05-01 12:23:59 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (not_a_list.json)
-2025-05-01 12:23:59 utils.py, WARNING: Returned the empty list.
-2025-05-01 12:23:59 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (nonexistent.json)
-2025-05-01 12:23:59 utils.py, ERROR: <line43> 
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> successfully completed.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> successfully completed.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> successfully completed.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> successfully completed.
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, ERROR: No key found with the name <operationAmount>
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, ERROR: No key found with the name <amount> or <currency>
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, ERROR: No key found with the name <amount> or <currency>
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> started.
-2025-05-01 12:23:59 utils.py, INFO: Starting request to Exchange Rates Data API
-2025-05-01 12:23:59 utils.py, INFO: Func <transaction_amount> completed.
+2025-05-10 12:16:15 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (test.json)
+2025-05-10 12:16:15 utils.py, INFO: Func <load_transactions_list> successfully completed. The list has been received.
+2025-05-10 12:16:15 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (empty.json)
+2025-05-10 12:16:15 utils.py, ERROR: <line43> Expecting value: line 1 column 1 (char 0)
+2025-05-10 12:16:15 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (invalid.json)
+2025-05-10 12:16:15 utils.py, ERROR: <line43> Expecting value: line 1 column 1 (char 0)
+2025-05-10 12:16:15 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (not_a_list.json)
+2025-05-10 12:16:15 utils.py, WARNING: Returned the empty list.
+2025-05-10 12:16:15 utils.py, INFO: Func <load_transactions_list> started. Checking the path - (nonexistent.json)
+2025-05-10 12:16:15 utils.py, ERROR: <line43> 
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> successfully completed.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> successfully completed.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> successfully completed.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> successfully completed.
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, ERROR: No key found with the name <operationAmount>
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, ERROR: No key found with the name <amount> or <currency>
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, ERROR: No key found with the name <amount> or <currency>
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> started.
+2025-05-10 12:16:15 utils.py, INFO: Starting request to Exchange Rates Data API
+2025-05-10 12:16:15 utils.py, INFO: Func <transaction_amount> completed.
